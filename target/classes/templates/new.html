@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nieuw Evenement - Anderlechtse NGO</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 min-h-screen flex flex-col">
+    <!-- Menu -->
+    <nav class="bg-green-600 text-white shadow-lg">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center space-x-8">
+                    <a href="/" class="text-xl font-bold">Anderlechtse NGO</a>
+                    <a href="/new" class="hover:text-green-200 transition-colors">Nieuw Evenement</a>
+                    <a href="/about" class="hover:text-green-200 transition-colors">Over Ons</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="flex-grow">
+        <div class="max-w-2xl mx-auto px-4 py-8">
+            <h1 class="text-3xl font-bold text-gray-800 mb-6">Nieuw Evenement Toevoegen</h1>
+            
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <form th:action="@{/new}" th:object="${evenement}" method="post">
+                    <div class="space-y-6">
+                        <!-- Titel -->
+                        <div>
+                            <label for="titel" class="block text-sm font-medium text-gray-700">Titel *</label>
+                            <input type="text" id="titel" th:field="*{titel}" 
+                                   class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500"
+                                   required>
+                            <span th:if="${#fields.hasErrors('titel')}" th:errors="*{titel}" class="text-red-500 text-sm"></span>
+                        </div>
+
+                        <!-- Tijdstip -->
+                        <div>
+                            <label for="tijdstip" class="block text-sm font-medium text-gray-700">Tijdstip *</label>
+                            <input type="datetime-local" id="tijdstip" th:field="*{tijdstip}" 
+                                   class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500"
+                                   required>
+                            <span th:if="${#fields.hasErrors('tijdstip')}" th:errors="*{tijdstip}" class="text-red-500 text-sm"></span>
+                        </div>
+
+                        <!-- Omschrijving -->
+                        <div>
+                            <label for="omschrijving" class="block text-sm font-medium text-gray-700">Omschrijving *</label>
+                            <textarea id="omschrijving" th:field="*{omschrijving}" rows="4"
+                                      class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500"
+                                      required></textarea>
+                            <span th:if="${#fields.hasErrors('omschrijving')}" th:errors="*{omschrijving}" class="text-red-500 text-sm"></span>
+                        </div>
+
+                        <!-- Organisatie -->
+                        <div>
+                            <label for="organisatie" class="block text-sm font-medium text-gray-700">Organisatie *</label>
+                            <input type="text" id="organisatie" th:field="*{organisatie}" 
+                                   class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500"
+                                   required>
+                            <span th:if="${#fields.hasErrors('organisatie')}" th:errors="*{organisatie}" class="text-red-500 text-sm"></span>
+                        </div>
+
+                        <!-- Contact Email -->
+                        <div>
+                            <label for="contactEmail" class="block text-sm font-medium text-gray-700">Contact Email *</label>
+                            <input type="email" id="contactEmail" th:field="*{contactEmail}" 
+                                   class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500"
+                                   required>
+                            <span th:if="${#fields.hasErrors('contactEmail')}" th:errors="*{contactEmail}" class="text-red-500 text-sm"></span>
+                        </div>
+
+                        <!-- Locatie -->
+                        <div>
+                            <label for="locatieId" class="block text-sm font-medium text-gray-700">Locatie *</label>
+                            <select id="locatieId" name="locatieId" 
+                                    class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500"
+                                    required>
+                                <option value="">Selecteer een locatie</option>
+                                <option th:each="locatie : ${locaties}" 
+                                        th:value="${locatie.id}" 
+                                        th:text="${locatie.naam + ' - ' + locatie.adres}">Locatie</option>
+                            </select>
+                        </div>
+
+                        <!-- Submit Buttons -->
+                        <div class="flex justify-end space-x-4">
+                            <a href="/" 
+                               class="inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                                Annuleren
+                            </a>
+                            <button type="submit" 
+                                    class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
+                                Evenement Toevoegen
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-4 mt-auto">
+        <div class="max-w-6xl mx-auto px-4 text-center">
+            <p>&copy; 2024 Anderlechtse NGO. Alle rechten voorbehouden.</p>
+        </div>
+    </footer>
+</body>
+</html> 

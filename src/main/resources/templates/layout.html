@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${title} ? ${title} + ' - Anderlechtse NGO' : 'Anderlechtse NGO'">Anderlechtse NGO</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 min-h-screen flex flex-col">
+    <!-- Menu -->
+    <nav class="bg-blue-600 text-white shadow-lg">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center space-x-8">
+                    <a href="/" class="text-xl font-bold">Anderlechtse NGO</a>
+                    <a href="/new" class="hover:text-blue-200 transition-colors">Nieuw Evenement</a>
+                    <a href="/about" class="hover:text-blue-200 transition-colors">Over Ons</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="flex-grow">
+        <div th:replace="${content}">
+            <!-- Content will be inserted here -->
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-4 mt-auto">
+        <div class="max-w-6xl mx-auto px-4 text-center">
+            <p>&copy; 2024 Anderlechtse NGO. Alle rechten voorbehouden.</p>
+        </div>
+    </footer>
+</body>
+</html> 
