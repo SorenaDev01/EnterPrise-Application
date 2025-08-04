@@ -1,125 +1,47 @@
 # Anderlechtse NGO - Evenementen Webapp
 
-## Project Beschrijving
-
-Dit is een prototype webapp voor een Anderlechtse NGO die zich inzet voor gemeenschapsbouwen en hulp aan mensen die het minder breed hebben. De webapp bestaat uit verschillende pagina's voor het beheren van evenementen.
+## Beschrijving
+Een eenvoudige webapp voor een Anderlechtse NGO om evenementen te beheren. Je kan evenementen bekijken, toevoegen en de details bekijken.
 
 ## Functionaliteiten
+- Overzicht van de 10 laatste evenementen  
+- Formulier voor nieuwe evenementen met validatie  
+- Detailpagina per evenement  
+- Over ons pagina  
 
-- **Index**: Overzicht van de 10 laatste evenementen met titel en organisatie
-- **New**: Formulier voor het toevoegen van nieuwe evenementen met validatie
-- **Details**: Gedetailleerde weergave van een specifiek evenement
-- **About**: Informatie over de NGO
+## Technologieën
+- Java Spring Boot (Backend)  
+- H2 in-memory database  
+- Thymeleaf templates (Frontend)  
+- Tailwind CSS via CDN  
+- Maven als build tool  
 
-## Technische Stack
-
-- **Backend**: Java Spring Boot 2.x
-- **Database**: H2 in-memory database
-- **Frontend**: Thymeleaf templates
-- **CSS Framework**: Tailwind CSS (via CDN)
-- **Build Tool**: Maven
-
-## Installatie en Deployment
-
-### Vereisten
-- Java 11 of hoger
-- Maven 3.6 of hoger
-
-### Stappen om de applicatie te starten:
-
-1. **Clone het project**
+## Installatie & Starten
+1. Clone het project:  
    ```bash
    git clone <repository-url>
    cd <project-directory>
-   ```
+Start de app:
 
-2. **Start de applicatie**
-   ```bash
-   # Via Maven wrapper
-   ./mvnw spring-boot:run
-   
-   # Of via Maven (als je Maven geïnstalleerd hebt)
-   mvn spring-boot:run
-   ```
+bash
+Copier
+Modifier
+./mvnw spring-boot:run
+# of als Maven geïnstalleerd is:
+mvn spring-boot:run
+Open in browser: http://localhost:8080
 
-3. **Open de applicatie**
-   - Ga naar: http://localhost:8080
-   - H2 Database Console: http://localhost:8080/h2-console
-     - JDBC URL: `jdbc:h2:mem:testdb`
-     - Username: `sa`
-     - Password: `password`
+Projectstructuur
+src/main/java — Java code (controllers, services, entities)
 
-### Build voor productie
-```bash
-mvn clean package
-java -jar target/taak-herex-0.0.1-SNAPSHOT.jar
-```
+src/main/resources/templates — Thymeleaf pagina’s
 
-## Project Structuur
+application.properties — Configuratie
 
-```
-src/
-├── main/
-│   ├── java/org/example/taakherex/
-│   │   ├── Application.java              # Spring Boot main class
-│   │   ├── Evenement.java               # Evenement entity
-│   │   ├── Locatie.java                 # Locatie entity
-│   │   ├── DataInitializer.java         # Testdata initializer
-│   │   ├── controller/
-│   │   │   └── EvenementController.java # Web controllers
-│   │   ├── repository/
-│   │   │   ├── EvenementRepository.java # Data access layer
-│   │   │   └── LocatieRepository.java   # Data access layer
-│   │   └── service/
-│   │       ├── EvenementService.java    # Business logic
-│   │       └── LocatieService.java      # Business logic
-│   └── resources/
-│       ├── application.properties       # Configuratie
-│       └── templates/                   # Thymeleaf templates
-│           ├── index.html              # Hoofdpagina
-│           ├── new.html                # Nieuw evenement formulier
-│           ├── details.html            # Evenement details
-│           └── about.html              # Over ons pagina
-```
+Validatie & Testdata
+Validatie op verplichte velden en e-mailadres
 
-## Gebruikte Bronnen en Documentatie
+Testdata (3 locaties + 3 evenementen) wordt automatisch geladen bij start
 
-### Spring Boot
-- [Spring Boot Reference Documentation](https://docs.spring.io/spring-boot/docs/current/reference/html/)
-- [Spring Boot Getting Started Guide](https://spring.io/guides/gs/spring-boot/)
-
-### Thymeleaf
-- [Thymeleaf Documentation](https://www.thymeleaf.org/documentation.html)
-- [Thymeleaf Tutorial](https://www.thymeleaf.org/doc/tutorials/3.0/usingthymeleaf.html)
-
-### Tailwind CSS
-- [Tailwind CSS Documentation](https://tailwindcss.com/docs)
-- [Tailwind CSS CDN](https://tailwindcss.com/docs/installation/play-cdn)
-
-### JPA/Hibernate
-- [Spring Data JPA Reference](https://docs.spring.io/spring-data/jpa/docs/current/reference/html/)
-- [Hibernate Documentation](https://hibernate.org/orm/documentation/)
-
-### H2 Database
-- [H2 Database Documentation](http://www.h2database.com/html/main.html)
-
-## Chat History AI Tools
-
-Dit project is ontwikkeld met behulp van AI-assistentie. De volledige chat history en gebruikte prompts zijn beschikbaar in de project documentatie.
-
-## Validatie
-
-De applicatie bevat validatie voor:
-- Verplichte velden (titel, omschrijving, organisatie, tijdstip)
-- Geldig emailadres voor contactpersoon
-- Locatie selectie
-
-## Testdata
-
-Bij het eerste opstarten wordt automatisch testdata toegevoegd:
-- 3 locaties (Gemeenschapscentrum, Sportcomplex, Bibliotheek)
-- 3 evenementen (Gemeenschapsontbijt, Voetbaltoernooi, Leesclub)
-
-## Licentie
-
-Dit project is ontwikkeld als onderdeel van een schoolopdracht. 
+Licentie
+Dit project is onderdeel van een schoolopdracht.
